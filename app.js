@@ -2,16 +2,16 @@
 const challenges = [
     {
         day: 1,
-        theme: "Beginnings",
+        theme: "Stillness and Subtle Change",
         challenges: [
             {
                 type: "Emotion Puzzle",
-                clue: "The day was bright and full of promise. One emotion was clear, one was hopeful, and one was hidden.",
-                options: ["Joy", "Hope", "Curiosity", "Calm", "Wonder", "Longing"]
+                clue: "The air was quiet, but not empty. A single leaf turned in the breeze. Something shifted, though nothing moved.",
+                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
             },
             {
                 type: "Letter Prompt",
-                prompt: "Write a short letter using the words: 'Sunrise', 'Path', and 'Whisper'."
+                prompt: "Write a short letter or journal entry using these three words: 'Pause,' 'Edge,' and 'Echo.'"
             },
             {
                 type: "Token Trade",
@@ -20,72 +20,75 @@ const challenges = [
                     "Trade 1 Joy + 1 Longing for 1 Clarity",
                     "Keep your tokens for later use"
                 ]
+            },
+            {
+                type: "Reflection",
+                question: "What did you notice today that you might have missed yesterday?"
             }
-        ],
-        reflection: "What new beginning did you experience today?"
+        ]
     },
     // Add more days here up to day 15
 ];
 
 let currentDay = 1;
 
-function loadDay(day) {
-    const container = document.getElementById('challenge-container');
-    container.innerHTML = '';
+function unlockNextDay() {
+    if (currentDay < challenges.length) {
+        currentDay++;
+        renderDay(currentDay);
+    }
+}
+
+function renderDay(day) {
+    const dayContainer = document.getElementById('day-container');
+    const dayContent = document.getElementById('day-content');
+    const nextDayBtn = document.getElementById('next-day-btn');
 
     const dayData = challenges.find(challenge => challenge.day === day);
-    if (!dayData) return;
-
-    const theme = document.createElement('h2');
-    theme.textContent = `Day ${day}: ${dayData.theme}`;
-    container.appendChild(theme);
+    dayContainer.querySelector('h2').innerText = `Day ${day}`;
+    dayContent.innerHTML = '';
 
     dayData.challenges.forEach(challenge => {
         const challengeElement = document.createElement('div');
         challengeElement.classList.add('challenge');
 
         if (challenge.type === 'Emotion Puzzle') {
-            const clue = document.createElement('p');
-            clue.textContent = `Clue: ${challenge.clue}`;
-            challengeElement.appendChild(clue);
-
-            const options = document.createElement('ul');
-            challenge.options.forEach(option => {
-                const optionElement = document.createElement('li');
-                optionElement.textContent = option;
-                options.appendChild(optionElement);
-            });
-            challengeElement.appendChild(options);
+            challengeElement.innerHTML = `
+                <h3>Emotion Puzzle</h3>
+                <p>${challenge.clue}</p>
+                <ul>
+                    ${challenge.options.map(option => `<li>${option}</li>`).join('')}
+                </ul>
+            `;
         } else if (challenge.type === 'Letter Prompt') {
-            const prompt = document.createElement('p');
-            prompt.textContent = `Prompt: ${challenge.prompt}`;
-            challengeElement.appendChild(prompt);
+            challengeElement.innerHTML = `
+                <h3>Letter Prompt</h3>
+                <p>${challenge.prompt}</p>
+            `;
         } else if (challenge.type === 'Token Trade') {
-            const options = document.createElement('ul');
-            challenge.options.forEach(option => {
-                const optionElement = document.createElement('li');
-                optionElement.textContent = option;
-                options.appendChild(optionElement);
-            });
-            challengeElement.appendChild(options);
+            challengeElement.innerHTML = `
+                <h3>Token Trade</h3>
+                <ul>
+                    ${challenge.options.map(option => `<li>${option}</li>`).join('')}
+                </ul>
+            `;
+        } else if (challenge.type === 'Reflection') {
+            challengeElement.innerHTML = `
+                <h3>Reflection</h3>
+                <p>${challenge.question}</p>
+            `;
         }
 
-        container.appendChild(challengeElement);
+        dayContent.appendChild(challengeElement);
     });
 
-    const reflection = document.createElement('p');
-    reflection.textContent = `Reflection: ${dayData.reflection}`;
-    container.appendChild(reflection);
-}
-
-function nextDay() {
-    currentDay++;
-    if (currentDay > challenges.length) {
-        currentDay = 1;
+    if (currentDay === challenges.length) {
+        nextDayBtn.style.display = 'none';
+    } else {
+        nextDayBtn.style.display = 'block';
     }
-    loadDay(currentDay);
 }
 
-window.onload = () => {
-    loadDay(currentDay);
-};
+document.addEventListener('DOMContentLoaded', () => {
+    renderDay(currentDay);
+});

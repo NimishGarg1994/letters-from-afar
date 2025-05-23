@@ -2,10 +2,11 @@
 {
     "name": "Letters from Afar",
     "short_name": "Letters",
-    "start_url": ".",
+    "start_url": "index.html",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "description": "A solo journaling game for a 15-day journey.",
+    "background_color": "#f4f4f4",
+    "theme_color": "#4CAF50",
+    "description": "A Journey in 15 Days",
     "icons": [
         {
             "src": "icon-192x192.png",
