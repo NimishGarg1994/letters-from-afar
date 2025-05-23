@@ -1,14 +1,14 @@
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open('letters-from-afar-v1').then((cache) => {
+        caches.open('letters-from-afar').then((cache) => {
             return cache.addAll([
-                'index.html',
-                'styles.css',
-                'app.js',
-                'manifest.json',
-                'icon-192x192.png',
-                'icon-512x512.png'
+                './index.html',
+                './styles.css',
+                './app.js',
+                './manifest.json',
+                './icon-192x192.png',
+                './icon-512x512.png'
             ]);
         })
     );

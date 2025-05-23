@@ -2,384 +2,112 @@
 const challenges = [
     {
         day: 1,
+        title: "Day 1: The Beginning",
         tasks: [
             {
-                type: "Emotion Puzzle",
-                content: "The air was quiet, but not empty. A single leaf turned in the breeze. Something shifted, though nothing moved.",
+                type: "emotionPuzzle",
+                clue: "The air was quiet, but not empty. A single leaf turned in the breeze. Something shifted, though nothing moved.",
                 options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
             },
             {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Pause,' 'Edge,' and 'Echo.'"
+                type: "letterPrompt",
+                prompt: "Write a short letter or journal entry using these three words: 'Pause,' 'Edge,' and 'Echo.'"
             },
             {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 2 × Curiosity, 1 × Joy, 1 × Longing. Trade Options: Trade 2 Curiosity for 1 Wonder, Trade 1 Joy + 1 Longing for 1 Clarity, Keep your tokens for later use."
+                type: "tokenTrade",
+                currentTokens: ["Curiosity", "Joy", "Longing"],
+                tradeOptions: [
+                    { from: ["Curiosity", "Curiosity"], to: "Wonder" },
+                    { from: ["Joy", "Longing"], to: "Clarity" }
+                ]
             },
             {
-                type: "Reflection Question",
-                content: "What did you notice today that you might have missed yesterday?"
+                type: "reflection",
+                question: "What did you notice today that you might have missed yesterday?"
             }
         ]
     },
-    {
-        day: 2,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "A gentle rain fell, each drop a whisper. The world felt both vast and intimate.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Rain,' 'Whisper,' and 'Vast.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 1 × Wonder, 2 × Calm. Trade Options: Trade 1 Wonder for 2 Joy, Trade 2 Calm for 1 Clarity, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What brought you a moment of peace today?"
-            }
-        ]
-    },
-    {
-        day: 3,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "The sun set slowly, painting the sky with hues of gold and pink. A day well-lived, a night to come.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Sunset,' 'Gold,' and 'Night.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 1 × Joy, 1 × Clarity. Trade Options: Trade 1 Joy for 2 Calm, Trade 1 Clarity for 1 Wonder, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What was the highlight of your day?"
-            }
-        ]
-    },
-    {
-        day: 4,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "The air was quiet, but not empty. A single leaf turned in the breeze. Something shifted, though nothing moved.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Pause,' 'Edge,' and 'Echo.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 2 × Curiosity, 1 × Joy, 1 × Longing. Trade Options: Trade 2 Curiosity for 1 Wonder, Trade 1 Joy + 1 Longing for 1 Clarity, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What did you notice today that you might have missed yesterday?"
-            }
-        ]
-    },
-    {
-        day: 5,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "A gentle rain fell, each drop a whisper. The world felt both vast and intimate.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Rain,' 'Whisper,' and 'Vast.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 1 × Wonder, 2 × Calm. Trade Options: Trade 1 Wonder for 2 Joy, Trade 2 Calm for 1 Clarity, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What brought you a moment of peace today?"
-            }
-        ]
-    },
-    {
-        day: 6,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "The sun set slowly, painting the sky with hues of gold and pink. A day well-lived, a night to come.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Sunset,' 'Gold,' and 'Night.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 1 × Joy, 1 × Clarity. Trade Options: Trade 1 Joy for 2 Calm, Trade 1 Clarity for 1 Wonder, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What was the highlight of your day?"
-            }
-        ]
-    },
-    {
-        day: 7,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "The air was quiet, but not empty. A single leaf turned in the breeze. Something shifted, though nothing moved.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Pause,' 'Edge,' and 'Echo.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 2 × Curiosity, 1 × Joy, 1 × Longing. Trade Options: Trade 2 Curiosity for 1 Wonder, Trade 1 Joy + 1 Longing for 1 Clarity, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What did you notice today that you might have missed yesterday?"
-            }
-        ]
-    },
-    {
-        day: 8,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "A gentle rain fell, each drop a whisper. The world felt both vast and intimate.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Rain,' 'Whisper,' and 'Vast.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 1 × Wonder, 2 × Calm. Trade Options: Trade 1 Wonder for 2 Joy, Trade 2 Calm for 1 Clarity, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What brought you a moment of peace today?"
-            }
-        ]
-    },
-    {
-        day: 9,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "The sun set slowly, painting the sky with hues of gold and pink. A day well-lived, a night to come.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Sunset,' 'Gold,' and 'Night.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 1 × Joy, 1 × Clarity. Trade Options: Trade 1 Joy for 2 Calm, Trade 1 Clarity for 1 Wonder, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What was the highlight of your day?"
-            }
-        ]
-    },
-    {
-        day: 10,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "The air was quiet, but not empty. A single leaf turned in the breeze. Something shifted, though nothing moved.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Pause,' 'Edge,' and 'Echo.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 2 × Curiosity, 1 × Joy, 1 × Longing. Trade Options: Trade 2 Curiosity for 1 Wonder, Trade 1 Joy + 1 Longing for 1 Clarity, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What did you notice today that you might have missed yesterday?"
-            }
-        ]
-    },
-    {
-        day: 11,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "A gentle rain fell, each drop a whisper. The world felt both vast and intimate.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Rain,' 'Whisper,' and 'Vast.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 1 × Wonder, 2 × Calm. Trade Options: Trade 1 Wonder for 2 Joy, Trade 2 Calm for 1 Clarity, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What brought you a moment of peace today?"
-            }
-        ]
-    },
-    {
-        day: 12,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "The sun set slowly, painting the sky with hues of gold and pink. A day well-lived, a night to come.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Sunset,' 'Gold,' and 'Night.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 1 × Joy, 1 × Clarity. Trade Options: Trade 1 Joy for 2 Calm, Trade 1 Clarity for 1 Wonder, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What was the highlight of your day?"
-            }
-        ]
-    },
-    {
-        day: 13,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "The air was quiet, but not empty. A single leaf turned in the breeze. Something shifted, though nothing moved.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Pause,' 'Edge,' and 'Echo.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 2 × Curiosity, 1 × Joy, 1 × Longing. Trade Options: Trade 2 Curiosity for 1 Wonder, Trade 1 Joy + 1 Longing for 1 Clarity, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What did you notice today that you might have missed yesterday?"
-            }
-        ]
-    },
-    {
-        day: 14,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "A gentle rain fell, each drop a whisper. The world felt both vast and intimate.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Rain,' 'Whisper,' and 'Vast.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 1 × Wonder, 2 × Calm. Trade Options: Trade 1 Wonder for 2 Joy, Trade 2 Calm for 1 Clarity, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What brought you a moment of peace today?"
-            }
-        ]
-    },
-    {
-        day: 15,
-        tasks: [
-            {
-                type: "Emotion Puzzle",
-                content: "The sun set slowly, painting the sky with hues of gold and pink. A day well-lived, a night to come.",
-                options: ["Joy", "Longing", "Clarity", "Wonder", "Calm", "Curiosity"]
-            },
-            {
-                type: "Letter Prompt",
-                content: "Write a short letter or journal entry using these three words: 'Sunset,' 'Gold,' and 'Night.'"
-            },
-            {
-                type: "Token Trade",
-                content: "You currently have the following emotional tokens: 1 × Joy, 1 × Clarity. Trade Options: Trade 1 Joy for 2 Calm, Trade 1 Clarity for 1 Wonder, Keep your tokens for later use."
-            },
-            {
-                type: "Reflection Question",
-                content: "What was the highlight of your day?"
-            }
-        ]
-    }
+    // Add more days here up to day 15
 ];
 
 let currentDay = 1;
 
 function renderDay(day) {
-    const dayContainer = document.getElementById('day-container');
-    const dayContent = document.getElementById('day-content');
-    const nextDayBtn = document.getElementById('next-day-btn');
-
     const dayData = challenges.find(challenge => challenge.day === day);
-    if (!dayData) return;
+    const dayTitle = document.getElementById("day-title");
+    const dayContent = document.getElementById("day-content");
 
-    dayContainer.querySelector('h2').textContent = `Day ${day}`;
-    dayContent.innerHTML = '';
+    dayTitle.textContent = dayData.title;
+    dayContent.innerHTML = "";
 
     dayData.tasks.forEach(task => {
-        const taskElement = document.createElement('div');
-        taskElement.classList.add('task');
+        const taskElement = document.createElement("div");
+        taskElement.classList.add("task");
 
-        const taskTitle = document.createElement('h3');
-        taskTitle.textContent = task.type;
-        taskElement.appendChild(taskTitle);
+        if (task.type === "emotionPuzzle") {
+            const clueElement = document.createElement("p");
+            clueElement.textContent = task.clue;
+            taskElement.appendChild(clueElement);
 
-        const taskContent = document.createElement('p');
-        taskContent.textContent = task.content;
-        taskElement.appendChild(taskContent);
-
-        if (task.options) {
-            const optionsList = document.createElement('ul');
             task.options.forEach(option => {
-                const optionItem = document.createElement('li');
-                optionItem.textContent = option;
-                optionsList.appendChild(optionItem);
+                const optionElement = document.createElement("button");
+                optionElement.textContent = option;
+                optionElement.onclick = () => selectEmotion(option);
+                taskElement.appendChild(optionElement);
             });
-            taskElement.appendChild(optionsList);
+        } else if (task.type === "letterPrompt") {
+            const promptElement = document.createElement("p");
+            promptElement.textContent = task.prompt;
+            taskElement.appendChild(promptElement);
+
+            const inputElement = document.createElement("textarea");
+            inputElement.placeholder = "Write your letter here...";
+            taskElement.appendChild(inputElement);
+        } else if (task.type === "tokenTrade") {
+            const currentTokensElement = document.createElement("p");
+            currentTokensElement.textContent = `Current Tokens: ${task.currentTokens.join(", ")}`;
+            taskElement.appendChild(currentTokensElement);
+
+            task.tradeOptions.forEach(tradeOption => {
+                const tradeElement = document.createElement("button");
+                tradeElement.textContent = `Trade ${tradeOption.from.join(" + ")} for ${tradeOption.to}`;
+                tradeElement.onclick = () => tradeTokens(tradeOption.from, tradeOption.to);
+                taskElement.appendChild(tradeElement);
+            });
+        } else if (task.type === "reflection") {
+            const questionElement = document.createElement("p");
+            questionElement.textContent = task.question;
+            taskElement.appendChild(questionElement);
+
+            const inputElement = document.createElement("textarea");
+            inputElement.placeholder = "Write your reflection here...";
+            taskElement.appendChild(inputElement);
         }
 
         dayContent.appendChild(taskElement);
     });
-
-    nextDayBtn.style.display = day < challenges.length ? 'block' : 'none';
 }
 
 function unlockNextDay() {
     if (currentDay < challenges.length) {
         currentDay++;
         renderDay(currentDay);
+        localStorage.setItem("currentDay", currentDay);
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function selectEmotion(emotion) {
+    console.log(`Selected emotion: ${emotion}`);
+}
+
+function tradeTokens(from, to) {
+    console.log(`Traded ${from.join(" + ")} for ${to}`);
+}
+
+window.onload = () => {
+    const savedDay = localStorage.getItem("currentDay");
+    if (savedDay) {
+        currentDay = parseInt(savedDay);
+    }
     renderDay(currentDay);
-});
+};
